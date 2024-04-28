@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { PeliculasCard } from "./PeliculasCard"
 import { get } from "../utils/conexionApi";
+import { DetallePeliculas } from "../pages/DetallePeliculas";
 
 export const PeliculasGrid=()=>{
 
@@ -19,7 +20,10 @@ return(
     <ul className="moviesGrid">
         {peliculas.map((pelicula)=>(
         <PeliculasCard key={pelicula.id} pelicula={pelicula}/>
-        ))}
+        
+        ))}<DetallePeliculas/>
     </ul>
+    
 )
+
 }

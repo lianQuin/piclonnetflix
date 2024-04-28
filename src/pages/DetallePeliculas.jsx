@@ -1,7 +1,7 @@
 import { get } from "../utils/conexionApi.js";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import YouTube from 'react-youtube';
+
 import "./DetallePeliculas.css";
 
 

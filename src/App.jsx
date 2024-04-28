@@ -17,7 +17,6 @@ import { LandingPage } from "./pages/LandingPage"
 <Routes>
 <Route path = "/" element = { <LandingPage/>} />
 <Route path = "/pelicula/:peliculaId" element = { <DetallePeliculas/>}/>
-
 </Routes>
 </BrowserRouter>
 )
