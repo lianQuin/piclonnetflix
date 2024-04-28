@@ -1,6 +1,7 @@
 import { get } from "../utils/conexionApi.js";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import YouTube from 'react-youtube';
 import "./DetallePeliculas.css";
 
 
@@ -21,19 +22,23 @@ export const DetallePeliculas = () => {
     return null;
   }
 
-  const imgURL = `https://image.tmdb.org/t/p/w300${pelicula.poster_path}`;
+  const imgURL = `https://image.tmdb.org/t/p/original${pelicula.poster_path}  `;
 
   const handleVideoClick = () => {
     setShowVideo(true);
   };
 
   return (
+  
+    
     <div className="contenedorDetalle">
       {showVideo ? (
-        <video controls>
+        <video controls  height={600}
+        width="100%">
           <source
             src="../../public/y2meta.net_480p-20th-century-fox-intro-hd.mp4"
             type="video/mp4"
+           
           />
         </video>
       ) : (
@@ -41,7 +46,9 @@ export const DetallePeliculas = () => {
           className="col"
           src={imgURL}
           alt={pelicula.title}
-          onClick={handleVideoClick}
+          onClick={handleVideoClick} 
+          height={600}
+          width="100%"
         />
       )}
       <div className="peliculaDetalle">
