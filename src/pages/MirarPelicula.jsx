@@ -53,7 +53,7 @@ export const MirarPelicula = () => {
 
 
       </div>
-  
+  <PeliculasGrid/>
     </div>
   );
 };

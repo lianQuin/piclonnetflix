@@ -51,28 +51,9 @@ export const DetallePeliculas = () => {
           width="100%"
         />
       )}
-      <div className="peliculaDetalle">
-        <p className="item">
-          <strong>Título: </strong>
-          {pelicula.title}
-        </p>
-        <p className="item">
-          <strong>Descripcion: </strong>
-          {pelicula.overview}
-        </p>
-        <p className="item">
-          <strong>Idioma original: </strong>
-          {pelicula.original_language}
-        </p>
-        <p className="item">
-          <strong>Popularidad: </strong>
-          {pelicula.popularity} vistas
-        </p>
-        <p className="item">
-          <strong>Fecha de  estreno: </strong>
-          {pelicula.release_date} vistas
-        </p>
-      </div>
+      
+        
+      
     </div>
   );
 };

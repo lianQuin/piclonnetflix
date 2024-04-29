@@ -1,6 +1,6 @@
 import {BrowserRouter,Routes,Route,Link} from "react-router-dom"
- 
-import { LandingPage } from "./pages/LandingPage"
+import { MirarPelicula } from "./pages/MirarPelicula"
+ import { LandingPage } from "./pages/LandingPage"
  import { DetallePeliculas } from "./pages/DetallePeliculas" 
 
 
@@ -17,6 +17,7 @@ import { LandingPage } from "./pages/LandingPage"
 <Routes>
 <Route path = "/" element = { <LandingPage/>} />
 <Route path = "/pelicula/:peliculaId" element = { <DetallePeliculas/>}/>
+<Route path = "/pelicula/:pelicula-ver" element = { <MirarPelicula/>}/>
 </Routes>
 </BrowserRouter>
 )

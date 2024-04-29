@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import YouTube from "react-youtube";
+import { Link } from "react-router-dom";
 import "./LandingPage.css"
 
 
@@ -71,6 +72,7 @@ export const LandingPage = () => {
         />
         <button type="submit">Buscar</button>
         <button onClick={() => { setPeliculas([]); setSearchKey(""); }}>Limpiar resultados</button>
+  
        
       </form>
       {/* Contenedor del reproductor */}
@@ -116,9 +118,13 @@ export const LandingPage = () => {
                       >
                         Reproducir tráiler
                       </button>
-                    ) : (
+                    ):(
                       "Perdón, no se encontró el tráiler"
                     )}
+                    ( <button
+                      className="boton-mirar">
+                      <Link to="/pelicula/:pelicula-ver">Mirar Pelicula</Link>
+                    </button>)
                     <h1 className="text-white">{pelicula.title}</h1>
                     <p className="text-white">{pelicula.overview}</p>
                   </div>
