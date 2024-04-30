@@ -1,22 +1,22 @@
 import React, { useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import "./Popular.css";
+import "./Popular";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 
-export const Popular = () => {
-  const [pelicula, setPelicula] = useState([]);
+export const Proximamente = () => {
+  const [pelicula, setPeliculas] = useState([]);
 
   useEffect(() => {
     fetch(
-      "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=083e8887717b2abaa4f5c958043b3676"
-    )  
+      "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1&api_key=083e8887717b2abaa4f5c958043b3676"
+    ) 
       .then((res) => res.json())
       .then((data) => {
         // Aquí se actualiza el estado con los datos obtenidos
-        setPelicula(data.results);
+        setPeliculas(data.results);
       })
       .catch((error) => {
         console.error("Error al obtener películas populares:", error);
@@ -26,7 +26,7 @@ export const Popular = () => {
   return (
     <>
       <div className="poster">
-        <h2>Lista de películas ordenadas por popularidad.</h2>
+        <h1>Lista de películas que se estrenarán próximamente</h1>
         <Carousel
           showThumbs={false}
           autoPlay={true}
