@@ -4,6 +4,7 @@ import { Carousel } from "react-responsive-carousel";
 import "./Popular";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { MirarPelicula } from "../MirarPelicula";
 
 
 export const Top = () => {
@@ -64,7 +65,7 @@ export const Top = () => {
             </Link>
           ))}
         </Carousel>
-      
+      <MirarPelicula/>
       </div>
     </>
   );

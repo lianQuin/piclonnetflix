@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import YouTube from "react-youtube";
 import { Link } from "react-router-dom";
-import "./LandingPage.css"
+import "./LandingPage.css";
+
 
 
 
@@ -119,7 +120,7 @@ export const LandingPage = () => {
                         Reproducir tráiler
                       </button>
                     ):(
-                      "Perdón, no se encontró el tráiler"
+                      "Perdón, no tiene tráiler"
                     )}
                     ( <button
                       className="boton-mirar">
@@ -131,12 +132,13 @@ export const LandingPage = () => {
                 </div>
               )}
             </div>
-          ) : null}
+          ) : null} :
         </main>
       </div>
 
       <div>
       {peliculas.map((pelicula) => (
+      
           <div key={pelicula.id} onClick={() => selectMovie(pelicula)}>
             <img
               src={`${imgURL}${pelicula.poster_path}`}
