@@ -1,29 +1,22 @@
-/* import peliculas from "./peliculas.json" */
+// PeliculasGrid.jsx
+import React from "react";
+import PeliculasCard from "./PeliculasCard"; // Importa el componente 
 
-import { useState, useEffect } from "react"
-import { PeliculasCard } from "./PeliculasCard"
-import { get } from "../utils/conexionApi";
-import { DetallePeliculas } from "../pages/DetallePeliculas";
+const PeliculasGrid = ({ peliculas, selectMovie }) => {
+    const API = "https://api.themoviedb.org/3";
+    const API_KEY = "083e8887717b2abaa4f5c958043b3676";
+    const imgURL = "https://image.tmdb.org/t/p/original";
+    const [searchKey, setSearchKey] = useState("");
+   
 
-export const PeliculasGrid=()=>{
 
-const [peliculas,setPeliculas] = useState([])
-//useEfect para la renderizacion, monta el componente   
-useEffect(()=>{
-get("/discover/movie").then((data)=>{
-    setPeliculas(data.results);
-})
-},[])
+  return (
+    <div className="peliculas-grid">
+      {peliculas.map((pelicula) => (
+        <PeliculasCard key={pelicula.id} pelicula={pelicula} selectMovie={selectMovie} />
+      ))}
+    </div>
+  );
+};
 
-return(
-    // contenedor para mostrar los posters de las peliculas
-    <ul className="moviesGrid">
-        {peliculas.map((pelicula)=>(
-        <PeliculasCard key={pelicula.id} pelicula={pelicula}/>
-        
-        ))}<DetallePeliculas/>
-    </ul>
-    
-)
-
-}
+export default PeliculasGrid;

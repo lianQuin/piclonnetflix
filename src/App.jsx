@@ -1,7 +1,10 @@
-import {BrowserRouter,Routes,Route,Link} from "react-router-dom"
-import { MirarPelicula } from "./pages/MirarPelicula"
+ import { MirarPelicula } from "./pages/MirarPelicula"
  import { LandingPage } from "./pages/LandingPage"
- import { DetallePeliculas } from "./pages/DetallePeliculas" 
+ import {BrowserRouter,Routes,Route,Link} from "react-router-dom"
+ import { Header } from "./pages/Header"
+ import { Popular } from "./pages/home/Popular"
+
+
 
 
  export const App = ()  =>{
@@ -10,19 +13,21 @@ import { MirarPelicula } from "./pages/MirarPelicula"
 <BrowserRouter>
 
 <header>
- <Link to = "/">
- <h1 className="title">PELICULAS</h1>
- </Link>
+<Link to="/"><Header/></Link>
+
+
 </header>
 <Routes>
 <Route path = "/" element = { <LandingPage/>} />
-<Route path = "/pelicula/:peliculaId" element = { <DetallePeliculas/>}/>
-<Route path = "/pelicula/:pelicula-ver" element = { <MirarPelicula/>}/>
+<Route path = "/pelicula/:pelicula-ver-peli" element = { <MirarPelicula/>}/>
+<Route path="/*" element={<h1>Error</h1>}></Route>
+<Route path = "/pelicula/popular" element = { <Popular/>}/>
+
+
 </Routes>
 </BrowserRouter>
 )
  }
-
 
 
 

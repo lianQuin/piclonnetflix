@@ -1,18 +1,25 @@
+// MovieCard.jsx
+import React from "react";
 
-import "./PeliculasCard.css"
-import {Link} from "react-router-dom"
-export const PeliculasCard = ({pelicula}) => {
+const PeliculasCard = ({ pelicula, selectMovie }) => {
+    const API = "https://api.themoviedb.org/3";
+    const API_KEY = "083e8887717b2abaa4f5c958043b3676";
+    const imgURL = "https://image.tmdb.org/t/p/original";
+    const [searchKey, setSearchKey] = useState("");
+  
+    
+    const [trailer, setTrailer] = useState(null);
+    const [playing, setPlaying] = useState(false);
 
-    const imgURL= `https://image.tmdb.org/t/p/original${pelicula.poster_path}`
+
 
   return (
-    
-    <li className="moviesCard">
-      <Link to={`/pelicula/${pelicula.id}`}>
-      <img className="movieImage" src={imgURL} alt={pelicula.title} height={600} width="100%" />
-      <h4>{pelicula.title}</h4>
-      <div className="movieData">{pelicula.original_title}</div>
-      </Link>
-    </li>
+    <div className="movie-card">
+      <img src={`${imgURL}${pelicula.poster_path}`} alt={pelicula.title} />
+      <h3>{pelicula.title}</h3>
+      <button onClick={() => selectMovie(pelicula)}>Ver detalles</button>
+    </div>
   );
 };
+
+export default PeliculasCard;

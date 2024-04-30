@@ -123,7 +123,7 @@ export const LandingPage = () => {
                     )}
                     ( <button
                       className="boton-mirar">
-                      <Link to="/pelicula/:pelicula-ver">Mirar Pelicula</Link>
+                      <Link to="/pelicula/:pelicula-ver-peli">Mirar Pelicula</Link>
                     </button>)
                     <h1 className="text-white">{pelicula.title}</h1>
                     <p className="text-white">{pelicula.overview}</p>

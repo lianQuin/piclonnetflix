@@ -1,3 +1,4 @@
+*{background-color: rgb(207, 151, 151);}
 .viewtrailer{
     min-height:700px;
     background-size: cover;
@@ -6,9 +7,11 @@
     align-items: flex-end;
 }
 .boton{background-color: black;
-color: bisque;outline: none; border: 1px solid white;
+color: bisque;outline: none;
+ border: 1px solid white;
 cursor:pointer; 
-margin-bottom: 10px;}
+margin-bottom: 10px;
+}
 .boton-mirar{background-color: black;
     color: bisque;outline: none; border: 1px solid white;
     cursor:pointer; 
