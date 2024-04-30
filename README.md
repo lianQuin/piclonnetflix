@@ -3,9 +3,7 @@
 ##Equipo n°5
 ##Alumnos:
 -Liliana Quintana.
--Marcela
--Dario
--Eduardo
+
 ##Para iniciar comienza intalando:
 -npm i
 -npm run dev (start)
