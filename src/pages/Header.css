@@ -1,0 +1,31 @@
+/* Estilos para el encabezado */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url("/Netflix-background_860jpg.jpg");
+    background: linear-gradient(rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.80)), url("/Netflix-background_860jpg.jpg");
+    background-position: center;
+    color: white;
+    padding: 1rem;
+    height: 30px;
+}
+
+/* Estilos para los enlaces */
+.headerLeft {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    /* Ocupa todo el ancho disponible */
+    margin-top: 10px;
+}
+
+/* Estilos específicos para los últimos tres enlaces */
+.headerLeft>a:nth-last-child(-n+3) {
+    margin-left: auto;
+    text-decoration: none;
+    color: white;
+    display: block; /* Asegura que los enlaces ocupen todo el ancho disponible */
+    text-align: center; /* Centra el texto horizontalmente */
+    margin-top: 10px; /* Agrega un espacio vertical de 20 píxeles (ajusta según tus necesidades) */
+}

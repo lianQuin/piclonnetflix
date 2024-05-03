@@ -10,7 +10,8 @@ import "./LandingPage.css";
 export const LandingPage = () => {
   const API = "https://api.themoviedb.org/3";
   const API_KEY = "083e8887717b2abaa4f5c958043b3676";
-  const imgURL = "https://image.tmdb.org/t/p/original";
+  const imgURL = "https://image.tmdb.org/t/p/w300";
+  const imgURL2 = "https://image.tmdb.org/t/p/original";
   const [searchKey, setSearchKey] = useState("");
   const [peliculas, setPeliculas] = useState([]);
   const [pelicula, setPelicula] = useState(null);
@@ -63,7 +64,12 @@ export const LandingPage = () => {
 
   return (
     <div>
-      <h2>Películas</h2>
+    <div className="Text">
+      <h2>Unlimited movies, TV</h2>
+      <h2>show and more.</h2>
+      <h4>watch anywhere.Cancel anytime.</h4>
+      <h6>puedes buscar tu pelicula y hacer click para disfrutarla.</h6> </div>
+      
       <form onSubmit={searchPeliculas}>
         <input
           type="text"
@@ -72,7 +78,7 @@ export const LandingPage = () => {
           onChange={(e) => setSearchKey(e.target.value)}
         />
         <button type="submit">Buscar</button>
-        <button onClick={() => { setPeliculas([]); setSearchKey(""); }}>Limpiar resultados</button>
+        <button onClick={() => { setPeliculas([]); setSearchKey(""); }}>Limpiar</button>
   
        
       </form>
@@ -82,7 +88,7 @@ export const LandingPage = () => {
           {pelicula ? (
             <div
               className="viewtrailer"
-              style={{ backgroundImage: `url("${imgURL}${pelicula.backdrop_path}")` }}
+              style={{ backgroundImage: `url("${imgURL2}${pelicula.backdrop_path}")` }}
             >
               {playing ? (
                 <>
@@ -91,8 +97,7 @@ export const LandingPage = () => {
                     className="reproductor container"
                     containerClassName={"youtube-container amru"}
                     opts={{
-                      width: "100%",
-                      height: "100%",
+                     
                       playerVars: {
                         autoplay: 1,
                         controls: 0,
@@ -122,10 +127,10 @@ export const LandingPage = () => {
                     ):(
                       "Perdón, no tiene tráiler"
                     )}
-                    ( <button
+                     <button
                       className="boton-mirar">
-                      <Link to="/pelicula/:pelicula-ver-peli">Mirar Pelicula</Link>
-                    </button>)
+                      <Link to="/pelicula/:pelicula-ver-peli" style={{textDecoration:"none"}}>Play</Link>
+                    </button>
                     <h1 className="text-white">{pelicula.title}</h1>
                     <p className="text-white">{pelicula.overview}</p>
                   </div>
@@ -136,17 +141,16 @@ export const LandingPage = () => {
         </main>
       </div>
 
-      <div>
+      <div className="Card-abajo">
       {peliculas.map((pelicula) => (
       
           <div key={pelicula.id} onClick={() => selectMovie(pelicula)}>
             <img
               src={`${imgURL}${pelicula.poster_path}`}
               alt=""
-              height={700}
-              width="100%"
+           
             />
-            <h4>{pelicula.title}</h4>
+            <h4 className="colorTitle">{pelicula.title}</h4>
           </div>
         ))}
       </div>

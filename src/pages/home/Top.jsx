@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { MirarPelicula } from "../MirarPelicula";
 
 
+
 export const Top = () => {
   const [pelicula, setPelicula] = useState([]);
 
@@ -24,6 +25,17 @@ export const Top = () => {
       });
   }, []);
 
+
+  const handleMovieClick = (id) => {
+  
+   <Link to="/MirarPelicula" style={{ textDecoration: "none", color: "white" }}>
+   Mirar Película
+ </Link>
+  
+
+
+  };
+
   return (
     <>
       <div className="poster">
@@ -36,15 +48,13 @@ export const Top = () => {
           showStatus={false}
         >
           {pelicula.map((pelicula) => (
-            <Link
-              style={{ textDecoration: "none", color: "white" }}
-              to={`/movie/${pelicula.id}`}
-            >
+            <div key={pelicula.id} onClick={() => handleMovieClick(pelicula.id)}>
               <div className="posterImage">
                 <img
                   src={`https://image.tmdb.org/t/p/original${
                     pelicula && pelicula.backdrop_path
                   }`}
+                  alt=""
                 />
               </div>
               <div className="posterImage__overlay">
@@ -62,11 +72,16 @@ export const Top = () => {
                   {pelicula ? pelicula.overview : ""}
                 </div>
               </div>
-            </Link>
+            </div>
           ))}
         </Carousel>
-      <MirarPelicula/>
+    
+      <div>aca hay un espacio
+        <MirarPelicula/>
       </div>
+
+      </div>
+      
     </>
   );
 };
