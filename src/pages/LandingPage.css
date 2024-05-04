@@ -36,6 +36,8 @@ button {
     border: none; /* Sin bordes */
     padding: 5px 10px; /* Espaciado interno */
     margin-left: 0; /* Sin espaciado externo a la izquierda */
+    height: 45px;
+    width: 75px;
   }
   
   /* Estilo para el campo de entrada */
@@ -45,6 +47,8 @@ button {
     border: none; /* Sin bordes */
     padding: 5px 10px; /* Espaciado interno */
     margin-right: 0; /* Sin espaciado externo a la derecha */
+    height: 35px;
+    width: 400px;
   }
   
   /* Centrar el contenido */
@@ -53,13 +57,17 @@ button {
     flex-direction: row;
     align-items: center;
     justify-content: center; /* Alineación al centro */
+    margin: 100px;
+    margin-top: 80px;
   }
   /* Estilo para el div con clase "Text" */
 .Text {
     color: white; /* Letras blancas */
     text-align: center; /* Centrar el texto */
-    margin-top: 15px;
-    height: 300px;
+    margin-top: 175px;
+    height: 110px;
+    font-family: sans-serif;
+    font-weight: 700;
   }
   
   /* Estilo para los títulos h2, h4 y h6 dentro del div "Text" */
@@ -74,6 +82,7 @@ button {
 main {
     display: flex;
     flex-direction: column;
+    margin-top: 300px;
   }
   
   /* Estilos para la vista de la película (primer elemento) */
@@ -115,7 +124,7 @@ main {
   /* Estilos para el botón "Reproducir tráiler" */
   .boton-mirar {
     color: rgb(32, 24, 24);
-    background-color: rgb(241, 231, 231); /* Color rojo para los botones */
+    background-color: rgb(241, 231, 231); 
     border: none; /* Sin bordes */
     padding: 5px 10px; /* Espaciado interno */
     margin-left: 0; /* Sin espaciado externo a la izquierda */
@@ -135,7 +144,7 @@ main {
   /* Estilos para cada tarjeta */
   .Card-abajo > div {
     flex: 1;
-    max-width: calc(100% - 100px); /* Ancho máximo para cada tarjeta (ajusta según tus necesidades) */
+    max-width: calc(100% - 100px); /* Ancho máximo para cada tarjeta */
     margin: 5px;
     
   }
@@ -146,4 +155,8 @@ main {
     padding: 20px;
     margin-top: auto;
 
+  }
+
+  h1{
+    margin: 0px;
   }

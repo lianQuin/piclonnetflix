@@ -77,7 +77,7 @@ export const Top = () => {
         </Carousel>
     
       <div>aca hay un espacio
-        <MirarPelicula/>
+      
       </div>
 
       </div>

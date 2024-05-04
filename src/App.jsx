@@ -6,6 +6,7 @@
  import { Top } from "./pages/home/Top"
 import { Proximamente } from "./pages/home/Proximamente"
 import { Error } from "./Components/Error"
+import { MirarTrailer } from "./Components/MirarTrailer"
 
 
 
@@ -27,7 +28,7 @@ import { Error } from "./Components/Error"
 <Route path = "/pelicula/popular" element = { <Popular/>}/>
 <Route path = "/pelicula/top" element = { <Top/>}/>
 <Route path = "/pelicula/Upcoming" element = { <Proximamente/>}/>
-
+<Route path = "/trailer/pelicula" element = { <MirarTrailer/> }/>
 
 </Routes>
 </BrowserRouter>

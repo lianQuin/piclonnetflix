@@ -64,12 +64,12 @@ export const LandingPage = () => {
 
   return (
     <div>
-    <div className="Text">
-      <h2>Unlimited movies, TV</h2>
-      <h2>show and more.</h2>
-      <h4>watch anywhere.Cancel anytime.</h4>
-      <h6>puedes buscar tu pelicula y hacer click para disfrutarla.</h6> </div>
-      
+      <div className="Text">
+        <h1>Unlimited movies, TV</h1>
+        <h1>show and more.</h1>
+        <h2>watch anywhere.Cancel anytime.</h2>
+        <h4>puedes buscar tu pelicula y hacer click para disfrutarla.</h4> </div>
+        
       <form onSubmit={searchPeliculas}>
         <input
           type="text"
@@ -97,16 +97,7 @@ export const LandingPage = () => {
                     className="reproductor container"
                     containerClassName={"youtube-container amru"}
                     opts={{
-                     
-                      playerVars: {
-                        autoplay: 1,
-                        controls: 0,
-                        cc_load_polity: 0,
-                        fs: 0,
-                        iv_load_policy: 0,
-                        rel: 0,
-                        showinfo: 0,
-                      },
+
                     }}
                   />
                   <button onClick={() => setPlaying(false)} className="boton">
