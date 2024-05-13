@@ -7,33 +7,37 @@
 import { Proximamente } from "./pages/home/Proximamente"
 import { Error } from "./Components/Error"
 import { MirarTrailer } from "./Components/MirarTrailer"
+import { Show } from "./Components/Show"
+import {Create} from "./Components/Create"
+import { Edit } from "./Components/Edit"
+import { HomeUsuario } from "./Components/HomeUsuario"
+import { Login } from "./Components/Login"
 
 
 
 
- export const App = ()  =>{
-
-   return (
-<BrowserRouter>
-
-<header>
-<Link to="/"><Header/></Link>
-
-
-</header>
-<Routes>
-<Route path = "/" element = { <LandingPage/>} />
-<Route path = "/pelicula/:pelicula-ver-peli" element = { <MirarPelicula/>}/>
-<Route path="/*" element={<Error/>}></Route>
-<Route path = "/pelicula/popular" element = { <Popular/>}/>
-<Route path = "/pelicula/top" element = { <Top/>}/>
-<Route path = "/pelicula/Upcoming" element = { <Proximamente/>}/>
-<Route path = "/trailer/pelicula" element = { <MirarTrailer/> }/>
-
-</Routes>
-</BrowserRouter>
-)
- }
-
-
-
+    export const App = ()  =>{
+      return (
+         <BrowserRouter>
+            <header>
+               <Header/>
+            </header>
+            <Routes>
+               <Route path = "/" element = { <LandingPage/>} />
+               <Route path = "/pelicula/:pelicula-ver-peli" element = { <MirarPelicula/>}/>
+               <Route path="/*" element={<Error/>}></Route>
+               <Route path = "/pelicula/popular" element = { <Popular/>}/>
+               <Route path = "/pelicula/top" element = { <Top/>}/>
+               <Route path = "/pelicula/Upcoming" element = { <Proximamente/>}/>
+               <Route path = "/trailer/pelicula" element = { <MirarTrailer/> }/>
+               <Route path = "/Show" element = {<Show/>}/>
+               <Route path = "/create" element = {<Create/>}/>
+               <Route path = "/edit/:id" element = {<Edit/>}/>
+               <Route path = "/homeUsuario" element = {<HomeUsuario/>}/>
+               <Route path = "/login" element = {<Login/>}/>
+               
+            </Routes>
+         </BrowserRouter>
+      )
+   }
+   

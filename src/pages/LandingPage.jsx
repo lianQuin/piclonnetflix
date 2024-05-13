@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import YouTube from "react-youtube";
 import { Link } from "react-router-dom";
+
 import "./LandingPage.css";
 
 
@@ -14,6 +15,7 @@ export const LandingPage = () => {
   const imgURL2 = "https://image.tmdb.org/t/p/original";
   const [searchKey, setSearchKey] = useState("");
   const [peliculas, setPeliculas] = useState([]);
+  const [cargando, setCargando]= useState(true);
   const [pelicula, setPelicula] = useState(null);
   const [trailer, setTrailer] = useState(null);
   const [playing, setPlaying] = useState(false);
@@ -58,10 +60,10 @@ export const LandingPage = () => {
     fetchMovies(searchKey);
   };
 
-  useEffect(() => {
-    fetchMovies();
+  useEffect(() => {setCargando(true)
+    fetchMovies();setCargando(false)
   }, []);
-
+  if (cargando){return<div>Cargando</div>}
   return (
     <div>
       <div className="Text">
@@ -113,16 +115,18 @@ export const LandingPage = () => {
                         onClick={() => setPlaying(true)}
                         type="button"
                       >
-                        Reproducir tráiler
+                        Tráiler
                       </button>
                     ):(
                       "Perdón, no tiene tráiler"
                     )}
                      <button
-                      className="boton-mirar">
-                      <Link to="/pelicula/:pelicula-ver-peli" style={{textDecoration:"none"}}>Play</Link>
+                      id="boton-mirar">
+                      <Link to="/pelicula/:pelicula-ver-peli" style={{textDecoration:"none", color: "white"}}>Play</Link>
                     </button>
                     <h1 className="text-white">{pelicula.title}</h1>
+                    {pelicula ? pelicula.vote_average : ""}
+                    <i className="fas fa-star" />{" "}
                     <p className="text-white">{pelicula.overview}</p>
                   </div>
                 </div>
@@ -141,7 +145,6 @@ export const LandingPage = () => {
               alt=""
            
             />
-            <h4 className="colorTitle">{pelicula.title}</h4>
           </div>
         ))}
       </div>
@@ -149,3 +152,8 @@ export const LandingPage = () => {
     </div>
   );
 };
+/*bootstrap
+    firebase
+react-router-dom
+sweetalert2
+    sweetalert2-react-content, import 'bootstrap/dist/css/bootstrap.min.css'*/

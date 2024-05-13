@@ -66,6 +66,7 @@ export const Top = () => {
                   <span className="posterImage__rating">
                     {pelicula ? pelicula.vote_average : ""}
                     <i className="fas fa-star" />{" "}
+                   
                   </span>
                 </div>
                 <div className="posterImage__description">
