@@ -32,7 +32,7 @@ import { Login } from "./Components/Login"
                <Route path = "/trailer/pelicula" element = { <MirarTrailer/> }/>
                <Route path = "/Show" element = {<Show/>}/>
                <Route path = "/create" element = {<Create/>}/>
-               <Route path = "/edit/:id" element = {<Edit/>}/>
+               <Route path="/edit/:id" element={<Edit />} />
                <Route path = "/homeUsuario" element = {<HomeUsuario/>}/>
                <Route path = "/login" element = {<Login/>}/>
                
