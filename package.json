@@ -1,7 +1,6 @@
 {
   "name": "hook",
   "private": true,
-  "homepage": "https://lianQuin.github.io/piclonnetflix",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
