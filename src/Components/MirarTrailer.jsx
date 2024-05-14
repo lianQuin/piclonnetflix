@@ -1,7 +1,7 @@
 import React from "react";
-import YouTube from "react-youtube"; // Asegúrate de importar el componente YouTube
+import YouTube from "react-youtube"; // importar el componente YouTube
 
-export const MirarTrailer = ({ trailer }) => { // Asegúrate de pasar 'trailer' como prop
+export const MirarTrailer = ({ trailer }) => { // pasar 'trailer' como prop
   return (
     <YouTube
       videoId={trailer.key}

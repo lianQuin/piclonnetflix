@@ -17,7 +17,7 @@ export const Login = () => {
          if (registrando){
             try{
             await createUserWithEmailAndPassword(auth, correo, contraseña)}
-            catch (error){alert("asegurese que la contraseña contenga minimo 8 caracteres")}
+            catch (error){alert("asegurese que la contraseña contenga minimo 8 caracteres, mayusculas y minusculas")}
          }
          else{ 
             try{

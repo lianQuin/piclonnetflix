@@ -1,52 +1,115 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import { getDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig/firebase.js";
 
-export const Edit = () => {
-  const { id } = useParams();
-  const [hero, setHero] = useState({
-    nombre: '',
-    apellido: '',
-    especialidad: '',
-    nacimiento: ''
-  });
 
-  useEffect(() => {
-    const fetchHero = async () => {
-      const heroDoc = doc(db, "heroes", id);
-      const heroData = await getDoc(heroDoc);
-      if (heroData.exists()) {
-        setHero(heroData.data());
-      } else {
-        console.log("No such document!");
-      }
+export const Edit = () =>{
+
+  //estados
+  const [nombre, setNombre] = useState("");
+  const [apellido, setApellido] = useState("");
+  const [nacimiento, setNacimiento] = useState(0);
+  const [especialidad, setEspecialidad] = useState("");
+
+  //redireccion
+  const navigate = useNavigate();
+
+/*   capturo el id */
+const {id} = useParams ()
+
+// funcion que actualiza un documento
+const update = async (e)=>{
+    e.preventDefault();
+    const heroeDoc = doc (db,"heroes",id)
+    const data = {
+            nombre: nombre,
+            apellido: apellido,
+            nacimiento: Number(nacimiento),
+            especialidad: especialidad,
     };
-    fetchHero();
-  }, [id]);
+    await updateDoc (heroeDoc,data)
+    navigate("/HomeUsuario")
+}
 
-  const handleInputChange = (event) => {
-    setHero({
-      ...hero,
-      [event.target.name]: event.target.value
-    });
-  };
+/* funcion que trae un doc por su id */
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const heroDoc = doc(db, "heroes", id);
-    await updateDoc(heroDoc, hero);
-    alert('Hero updated');
-  };
+const getHeroeById = async (id)=>{
+    const heroeDoc = await getDoc(doc(db,"heroes",id));
+    if (heroeDoc.exists()){
+        setNombre(heroeDoc.data().nombre);
+        setApellido(heroeDoc.data().apellido);
+        setNacimiento(heroeDoc.data().nacimiento);
+        setEspecialidad(heroeDoc.data().especialidad);
+    } else {
+        console.log("no Existe");
+    }
+}
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" name="nombre" value={hero.nombre} onChange={handleInputChange} />
-      <input type="text" name="apellido" value={hero.apellido} onChange={handleInputChange} />
-      <input type="text" name="especialidad" value={hero.especialidad} onChange={handleInputChange} />
-      <input type="text" name="nacimiento" value={hero.nacimiento} onChange={handleInputChange} />
-      <button type="submit">Actualizar héroe</button>
-    </form>
-  );
-};
+// traigo el heroe apenas carga el componente Edit
+useEffect(()=>{
+getHeroeById(id)
+},[])
 
+
+    return (
+<>
+<button className="btn-primary" onClick={()=>signOut(auth)}>volver</button>
+        <div className="container">
+        <div className="row">
+          <div className="col">
+            <h1>Actualizar Heroe</h1>
+            <form onSubmit={update}>
+              <div className="mb-3">
+                <label className="form-label">Nombre</label>
+                <input
+                  value={nombre}
+                  onChange={(e) => setNombre(e.target.value)}
+                  className="form-control"
+                  type="text"
+                />
+              </div>
+  
+              <div className="mb-3">
+                <label className="form-label">Apellido</label>
+                <input
+                  value={apellido}
+                  onChange={(e) => setApellido(e.target.value)}
+                  className="form-control"
+                  type="text"
+                />
+              </div>
+  
+              <div className="mb-3">
+                <label className="form-label">Nacimiento</label>
+                <input
+                  value={nacimiento}
+                  onChange={(e) => setNacimiento(e.target.value)}
+                  className="form-control"
+                  type="number"
+                />
+              </div>
+  
+              <div className="mb-3">
+                <label className="form-label">Especialidad</label>
+                <input
+                  value={especialidad}
+                  onChange={(e) => setEspecialidad(e.target.value)}
+                  className="form-control"
+                  type="text"
+                />
+              </div>
+  
+              <button type="submit" className="btn btn-primary">
+                Editar Heroe
+              </button>
+              <Link to="/HomeUsuario">
+                <button className="btn btn-danger">CANCELAR</button>
+              </Link>
+            </form>
+          </div>
+        </div>
+      </div>
+</>
+    )
+}

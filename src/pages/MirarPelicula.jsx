@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 
+
+
 export const MirarPelicula = () => {
   const [showVideo, setShowVideo] = useState(false);
-  const img = "../../Play-Button-Transparent-Image.png"; // Ruta de la imagen
+  const img = "/piclonnetflix/Play-Button-Transparent-Image.png"; // Ruta de la imagen
  
 
   const handleVideoClick = () => {
@@ -14,7 +16,7 @@ export const MirarPelicula = () => {
       {showVideo ? (
         <video controls height={600} width="100%">
           <source
-            src="../../y2meta.net_480p-20th-century-fox-intro-hd.mp4"
+            src="/piclonnetflix/y2meta.net_480p-20th-century-fox-intro-hd.mp4"
             type="video/mp4"
           />
         </video>

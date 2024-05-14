@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
@@ -43,8 +42,8 @@ export const HomeUsuario= () => {
   //5 funcion para la confirmacion de sweet alert
   const confirmDelete = (id) => {
     Swal.fire({
-      title: "Segurola?",
-      text: "Esto no tiene vuelta atras!",
+      title: "Seguro?",
+      text: "Esto sera definitivo!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -55,7 +54,7 @@ export const HomeUsuario= () => {
         deleteHeroe(id);
         Swal.fire({
           title: "Borrado!",
-          text: "Tu heroe ha sido Borrado",
+        
           icon: "success",
         });
       }
@@ -79,7 +78,7 @@ export const HomeUsuario= () => {
 
   return (
     <>
-    <button className="btn-primary" onClick={()=>signOut(auth)}>Logout</button>
+    <button className="btn-primary" onClick={()=>signOut(auth)}>volver</button>
       <div className="container">
         <div className="col">
           <div className="row">
@@ -129,4 +128,5 @@ export const HomeUsuario= () => {
     </>
   );
 };
+
 

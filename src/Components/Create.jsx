@@ -1,57 +1,92 @@
-import { addDoc } from "firebase/firestore";
-import { useState, useEffect } from "react";
-import { collection } from "firebase/firestore";
-import { db } from "../firebaseConfig/firebase.js";
-
-// 2 referenciamos a la base de datos (coleccion) de firestore
-const heroesCollection = collection(db, "heroes");
-
-/* SWEET ALERT */
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
-const mySwal = withReactContent(Swal);
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../firebaseConfig/firebase";
 
 export const Create = () => {
-  const [heroes, setHeroes] = useState([]);
-  const [newHero, setNewHero] = useState({
-    nombre: '',
-    apellido: '',
-    especialidad: '',
-    nacimiento: ''
-  });
+  //estados
+  const [nombre, setNombre] = useState("");
+  const [apellido, setApellido] = useState("");
+  const [nacimiento, setNacimiento] = useState(0);
+  const [especialidad, setEspecialidad] = useState("");
 
-  // Función para agregar un nuevo héroe
-  const createHero = async () => {
-    try {
-      // Agregar un nuevo documento a la colección "heroes"
-      const docRef = await addDoc(heroesCollection, newHero);
-      console.log("Document written with ID: ", docRef.id);
-      // Actualizar la lista de héroes
-      setHeroes([...heroes, { ...newHero, id: docRef.id }]);
-      // Mostrar una alerta de éxito
-      mySwal.fire('Éxito', 'Héroe creado con éxito', 'success');
-    } catch (e) {
-      console.error("Error adding document: ", e);
-      // Mostrar una alerta de error
-      mySwal.fire('Error', 'Hubo un error al crear el héroe', 'error');
-    }
-  };
+  //redireccion
+  const navigate = useNavigate();
 
-  const handleInputChange = (event) => {
-    setNewHero({
-      ...newHero,
-      [event.target.name]: event.target.value
+  // instanciar la coleccion
+  const heroesCollection = collection(db, "heroes");
+
+  // funcion para crear heroes
+
+  const createHeroe = async (e) => {
+    e.preventDefault();
+    await addDoc(heroesCollection, {
+      nombre: nombre,
+      apellido: apellido,
+      nacimiento: Number(nacimiento),
+      especialidad: especialidad,
     });
+    navigate("/HomeUsuario");
   };
-
   return (
-    <div>
-      <input type="text" name="nombre" placeholder="Nombre" onChange={handleInputChange} />
-      <input type="text" name="apellido" placeholder="Apellido" onChange={handleInputChange} />
-      <input type="text" name="especialidad" placeholder="Especialidad" onChange={handleInputChange} />
-      <input type="text" name="nacimiento" placeholder="Nacimiento" onChange={handleInputChange} />
-      <button onClick={createHero}>Crear héroe</button>
+    <>
+    <button className="btn-primary" onClick={()=>signOut(auth)}>volver</button>
+    <div className="container">
+      <div className="row">
+        <div className="col">
+          <h1>Crear Heroe</h1>
+          <form onSubmit={createHeroe}>
+            <div className="mb-3">
+              <label className="form-label">Nombre</label>
+              <input
+                value={nombre}
+                onChange={(e) => setNombre(e.target.value)}
+                className="form-control"
+                type="text"
+              />
+            </div>
+
+            <div className="mb-3">
+              <label className="form-label">Apellido</label>
+              <input
+                value={apellido}
+                onChange={(e) => setApellido(e.target.value)}
+                className="form-control"
+                type="text"
+              />
+            </div>
+
+            <div className="mb-3">
+              <label className="form-label">Nacimiento</label>
+              <input
+                value={nacimiento}
+                onChange={(e) => setNacimiento(e.target.value)}
+                className="form-control"
+                type="number"
+              />
+            </div>
+
+            <div className="mb-3">
+              <label className="form-label">Especialidad</label>
+              <input
+                value={especialidad}
+                onChange={(e) => setEspecialidad(e.target.value)}
+                className="form-control"
+                type="text"
+              />
+            </div>
+
+            <button type="submit" className="btn btn-primary">
+              Crear Heroe
+            </button>
+            <Link to="/HomeUsuario">
+              <button className="btn btn-danger">CANCELAR</button>
+            </Link>
+          </form>
+        </div>
+      </div>
     </div>
+    </>
   );
 };
 

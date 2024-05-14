@@ -1,45 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import "./Popular";
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { MirarPelicula } from "../MirarPelicula";
-
-
 
 export const Top = () => {
-  const [pelicula, setPelicula] = useState([]);
+  const [peliculas, setPeliculas] = useState([]);
 
   useEffect(() => {
     fetch(
       "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1&api_key=083e8887717b2abaa4f5c958043b3676"
-    ) 
+    )
       .then((res) => res.json())
       .then((data) => {
-        // Aquí se actualiza el estado con los datos obtenidos
-        setPelicula(data.results);
+        setPeliculas(data.results);
       })
       .catch((error) => {
         console.error("Error al obtener películas populares:", error);
       });
   }, []);
 
-
-  const handleMovieClick = (id) => {
-  
-   <Link to="/MirarPelicula" style={{ textDecoration: "none", color: "white" }}>
-   Mirar Película
- </Link>
-  
-
-
-  };
-
   return (
     <>
       <div className="poster">
-        <h2>Lista de películas ordenadas por clasificación, son las más valoradas</h2>
+      
         <Carousel
           showThumbs={false}
           autoPlay={true}
@@ -47,9 +30,9 @@ export const Top = () => {
           infiniteLoop={true}
           showStatus={false}
         >
-          {pelicula.map((pelicula) => (
-            <div key={pelicula.id} onClick={() => handleMovieClick(pelicula.id)}>
-              <div className="posterImage">
+          {peliculas.map((pelicula) => (
+            <div key={pelicula.id}>
+              <div className="posterImagen">
                 <img
                   src={`https://image.tmdb.org/t/p/original${
                     pelicula && pelicula.backdrop_path
@@ -57,19 +40,19 @@ export const Top = () => {
                   alt=""
                 />
               </div>
-              <div className="posterImage__overlay">
-                <div className="posterImage__title">
+              <div className="posterImagen__overlay">
+                <div className="posterImagen__titulo">
                   {pelicula ? pelicula.original_title : ""}
                 </div>
-                <div className="posterImage__runtime">
+                <div className="posterImagen__runtime">
                   {pelicula ? pelicula.release_date : ""}
-                  <span className="posterImage__rating">
+                  <span className="posterImagen__rating">
                     {pelicula ? pelicula.vote_average : ""}
                     <i className="fas fa-star" />{" "}
                    
                   </span>
                 </div>
-                <div className="posterImage__description">
+                <div className="posterImagen__descripcion">
                   {pelicula ? pelicula.overview : ""}
                 </div>
               </div>
@@ -77,12 +60,23 @@ export const Top = () => {
           ))}
         </Carousel>
     
-      <div>aca hay un espacio
-      
-      </div>
+        <div className="Card-abajo" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
+  {peliculas.map((pelicula) => (
+    <div key={pelicula.id} style={{ flex: '1 0 20%', margin: '1em', maxWidth: 'calc(25% - 2em)' }}>
+      <img
+        src={`https://image.tmdb.org/t/p/original${pelicula.poster_path}`}
+        alt=""
+        style={{ width: '100%', height: 'auto' }}
+      />
+    </div>
+  ))}
+</div>
+
 
       </div>
       
     </>
   );
 };
+
+

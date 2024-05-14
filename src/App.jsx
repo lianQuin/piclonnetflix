@@ -1,6 +1,6 @@
  import { MirarPelicula } from "./pages/MirarPelicula"
  import { LandingPage } from "./pages/LandingPage"
- import {BrowserRouter,Routes,Route,Link} from "react-router-dom"
+ import {BrowserRouter,Routes,Route} from "react-router-dom"
  import { Header } from "./pages/Header"
  import { Popular } from "./pages/home/Popular"
  import { Top } from "./pages/home/Top"
@@ -31,13 +31,18 @@ import { Login } from "./Components/Login"
                <Route path = "/pelicula/Upcoming" element = { <Proximamente/>}/>
                <Route path = "/trailer/pelicula" element = { <MirarTrailer/> }/>
                <Route path = "/Show" element = {<Show/>}/>
-               <Route path = "/create" element = {<Create/>}/>
-               <Route path="/edit/:id" element={<Edit />} />
-               <Route path = "/homeUsuario" element = {<HomeUsuario/>}/>
                <Route path = "/login" element = {<Login/>}/>
+               <Route path = "/HomeUsuario" element = {<HomeUsuario/>}/>
+               <Route path = "/create" element = {<Create/>}/>
+               <Route path="/edit/:id" element = {<Edit/>}/>
+              
                
             </Routes>
          </BrowserRouter>
       )
    }
    
+
+
+
+ 
