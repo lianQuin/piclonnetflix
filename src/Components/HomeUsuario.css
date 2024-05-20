@@ -1,0 +1,32 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+
+}
+
+tr{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-around;
+    background-color: darkgray;
+    border:solid black;
+}
+
+a, button{
+    width: auto;
+}
+
+td{
+    background-color: darkgray;
+    border: solid black;
+}
+
+.tamañoLetra{
+    font-size: small;
+}

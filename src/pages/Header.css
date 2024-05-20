@@ -8,7 +8,7 @@
     /* Ocupa todo el ancho disponible */
     margin-top: 10px;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 /* Estilos específicos para los últimos tres enlaces */

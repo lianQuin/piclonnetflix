@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { db,app } from "../firebaseConfig/firebase.js";
-
-
+import "./HomeUsuario.css"
 
 import { getAuth,onAuthStateChanged, signOut } from "firebase/auth";
 const auth=getAuth(app)
@@ -14,32 +13,15 @@ import withReactContent from "sweetalert2-react-content";
 const mySwal = withReactContent(Swal);
 
 export const HomeUsuario= () => {
-  //1 CONFIGURAR USESTATE (HOOK)
   const [heroes, setHeroes] = useState([]);
 
- 
-
-  // 2 referenciamos a la base de datos (coleccion) de firestore
   const heroesCollection = collection(db, "heroes");
 
-  //3 funcion para mostrar todos los documentos
-  /*     const getHeroes = async()=>{
-        const data = await getDocs (heroesCollection)
-      setHeroes (
-        data.docs.map((doc)=>({
-...doc.data(), id:doc.id
-        }))
-      )
-    } */
-  /*     console.log(heroes); */
-
-  /* 4 funcion para eliminar un doc */
   const deleteHeroe = async (id) => {
-    const heroeDoc = doc(db, "heroes", id); // heroesCollection
+    const heroeDoc = doc(db, "heroes", id);
     await deleteDoc(heroeDoc);
   };
 
-  //5 funcion para la confirmacion de sweet alert
   const confirmDelete = (id) => {
     Swal.fire({
       title: "Seguro?",
@@ -54,14 +36,12 @@ export const HomeUsuario= () => {
         deleteHeroe(id);
         Swal.fire({
           title: "Borrado!",
-        
           icon: "success",
         });
       }
     });
   };
 
-  // useEffect
   useEffect(() => {
     const getHeroes = async () => {
       const data = await getDocs(heroesCollection);
@@ -77,19 +57,16 @@ export const HomeUsuario= () => {
   }, [heroes]);
 
   return (
-    <>
-    <button className="btn-primary" onClick={()=>signOut(auth)}>volver</button>
-      <div className="container">
-        <div className="col">
-          <div className="row">
-            <div className="d-grid gap-2">
-              <Link to="/create" className="btn btn-secondary mt-2 mb-2">
-                {" "}
-                CREAR{" "}
-              </Link>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <button onClick={()=>signOut(auth)}>volver</button>
+      <div style={{ width: '80%', margin: '0 auto' }}>
+        <div>
+          <div>
+            <div>
+              <Link to="/create">CREAR</Link>
             </div>
 
-            <table className="table table-dark table-hover">
+            <table style={{ width: '100%', margin: '20px 0', textAlign: 'center' }}>
               <thead>
                 <tr>
                   <td>Nombre</td>
@@ -108,11 +85,10 @@ export const HomeUsuario= () => {
                     <td>{heroe.especialidad}</td>
                     <td>{heroe.nacimiento}</td>
                     <td>
-                      <Link to={`edit/${heroe.id}`} className="btn btn-light">
+                      <Link to={`edit/${heroe.id}`}>
                         <i className="fa-solid fa-pen-to-square"></i>
                       </Link>
                       <button
-                        className="btn btn-danger"
                         onClick={() => confirmDelete(heroe.id)}
                       >
                         <i className="fa-solid fa-trash"></i>
@@ -125,8 +101,7 @@ export const HomeUsuario= () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
-
 

@@ -32,7 +32,7 @@ export const Login = () => {
     <div className='container'>
        <div className="row">
         {/*columna mas chica para el form*/}
-        <div className="col-md-4">
+        <div className='cuadroChoto'>
             <div className='padre'>
                 <div className='card card-body shadow-lg' id='fondo'>
                     <h1 className='h1sesion'>Iniciar Sesion</h1>

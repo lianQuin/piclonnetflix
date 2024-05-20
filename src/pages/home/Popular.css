@@ -1,6 +1,4 @@
-.posterImagen{
-    height: 600px;
-}
+
 
 .posterImagen > img {
     margin: auto;
@@ -10,7 +8,7 @@
 
 .posterImagen__overlay {
     position: absolute;
-    padding: 5rem;
+    padding: 2rem;
     bottom: 0px;
     height: 70%;
     display: flex;
@@ -21,6 +19,9 @@
     background-image: linear-gradient(rgb(0,0,0,0), rgb(0,0,0,1));
     opacity: 1;
     transition: opacity .3s;
+    margin-top: -100px;
+    
+
 }   
 
 .posterImagen__overlay:hover {
@@ -29,16 +30,20 @@
 
 .posterImagen__titulo {
     font-weight: 900;
-    font-size: 4rem;
+    font-size: 1rem;
     margin-bottom: 0.4rem;
     text-align: left;
     color: bisque;
+    background-color: black;
+    opacity: 0.6;
 }
 
 .posterImagen__runtime {
-    font-size: 2rem;
+    font-size: smaller;
     margin-bottom: 1rem;
     color: bisque;
+    background-color: black;
+    opacity: 0.6;
 }
 
 
@@ -50,10 +55,12 @@
 
 .posterImagen__descripcion {
     font-style: italic;
-    font-size: 1rem;
+    font-size: smaller;
     margin-bottom: 0.25rem;
     display: flex;
     text-align: left;
-    width: 50%;
-    color: bisque;
+    color: white;
+    background-color: black;
+    opacity: 0.6;
 }
+
